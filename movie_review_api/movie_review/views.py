@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 from collections import Counter
 from rest_framework.decorators import api_view
-from .tmdb import search_movie, get_popular_movies
+from .tmdb import search_movies, get_popular_movies
 
 # Create your views here.
 
@@ -16,7 +16,7 @@ class MovieViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
     permission_classes = [permissions.AllowAny]
 
-    def recommendations(self.request):
+    def recommendations(self,request):
         user = request.user
         user_reviews = Review.objects.filter(user = user, rating__gte = 4)
 
@@ -51,7 +51,7 @@ class LikeViewSet (viewsets.ModelViewSet):
     def  perform_create(self, serializer):
         serializer.save(user = self.request.user
                         )
-2api_view(['GET'])       
+@api_view(['GET'])       
 def tmdb_search(request):
     query = request.GET.get('query')
     if not query:

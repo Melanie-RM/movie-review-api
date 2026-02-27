@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 TMBD_API_KEY = os.getenv('TMDB_API_KEY')
 
