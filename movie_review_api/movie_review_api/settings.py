@@ -25,9 +25,9 @@ TMBD_API_KEY = os.getenv('TMDB_API_KEY')
 SECRET_KEY = 'django-insecure-09w-^y3h389ys!n89qj4p0!0df!w$w2uu)d&4++-%0fivcfy@5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = 'movie_list'
 
 REST_FRAMEWORK= {'DEFAULT_AUTHENTIFICATION_CLASSES':[
     'rest_framework.authentification.SessionAuthentification',

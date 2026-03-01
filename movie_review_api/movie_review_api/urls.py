@@ -17,13 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
-
+from . import views
 def home(request):
     return HttpResponse("Welcome to the Movie Review API!")
 
 urlpatterns = [
-    path('',home),
     path('admin/', admin.site.urls),
-    path('api/', include('movie_review.urls')),
-    
+    path('api-auth/', include('rest_framework.urls')),
+    path('profile/', views.profile, name = 'profile'),
 ]
