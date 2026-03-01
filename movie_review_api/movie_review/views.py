@@ -63,3 +63,7 @@ def tmdb_search(request):
 def tmdb_popular(request):
     data = get_popular_movies()
     return Response(data)
+
+def home(request):
+    recommended_movies = get_recommended_movies(request.user)
+    return render(request, 'home.html', {'recommended_movies': recommended_movies})
